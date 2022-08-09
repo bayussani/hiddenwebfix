@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Informasi Anggota</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      body{
+        background-color: #FCBF87;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="informasi-karyawan.css" rel="stylesheet">
+  </head>
+  <body>
+
+<script language="JavaScript">
+  var tanggallengkap = new String();
+  var namahari = ("Minggu Senin Selasa Rabu Kamis Jumat Sabtu");
+  namahari = namahari.split(" ");
+  var namabulan = ("Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember");
+  namabulan = namabulan.split(" ");
+  var tgl = new Date();
+  var hari = tgl.getDay();
+  var tanggal = tgl.getDate();
+  var bulan = tgl.getMonth();
+  var tahun = tgl.getFullYear();
+  tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " + tahun;
+  </script>
+
+<span id='jam' ></span> | <script language='JavaScript'>document.write(tanggallengkap);</script>
+<br>
+<h1 style="color: white; font-weight: bold;">Welcome <span id="namapemilik">Admin</span></h1>
+<p id="namaperusahaan" style="text-decoration: underline; color: white;" onclick="window.location.href='./informasi-perusahaan.html'; return false;">PT. Hidden Jaya Makmur</p>
+
+<h1>Informasi Anggota <span id="xnamaanggota"></span></h1>
+<div class="container rounded mt-5 mb-5" style="background-color: #FCBF87;">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-4" width="140px" height="140px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" id="gambaranggota">
+            <input type='file'  class="form-control" id="upload" onchange="previewFile()" accept="image/*" >
+<!--            <label for="upload"><img src="pencil.svg" style="margin: 8px;"></label>-->
+               <script>
+                function previewFile() {
+              const preview = document.getElementById('gambaranggota');
+              const file = document.querySelector('input[type=file]').files[0];
+              const reader = new FileReader();
+              reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                preview.src = reader.result;
+              }, false);
+
+              if (file) {
+                reader.readAsDataURL(file);
+              }
+            }
+                  </script>
+            <span class="font-weight-bold mt-3" id="namaanggota">Nama Anggota</span>
+            <span class="text-black-50" id="idanggota">ID anggota</span>
+            <span class="text-black-50" id="emailanggota">Email Anggota</span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-3">
+                   <form class="container rounded ">
+                      <fieldset disabled id="myfield">
+                    <div class="col-md-12"><label class="labels">Nama Lengkap</label><input type="text" class="form-control" value="" id="inamaanggota"></div>
+                    <div class="col-md-12"><label class="labels">Alamat</label><input type="text" class="form-control" value="" id="alamat"></div>
+                    <div class="col-md-12"><label class="labels">Nomor Handphone</label><input type='number' class="form-control" value="" id="nomorhp"></div>
+                    <div class="col-md-12"><label class="labels">Bagian/Jabatan</label><input type="text" class="form-control" value="" id="bagian"></div>
+                    
+                       </fieldset>
+                    </form>
+                    <div class="col-md-12"><label class="labels">Tanggal Masuk Perusahaan</label><input type="text" class="form-control" disabled value="" id="tglmasuk"></div>
+                </div>
+                <div class="mt-5 text-center">
+                  <script src="informasi-karyawan.js"></script>
+                    <button id="btnEdit" class="btn btn-primary profile-button float-end" type="button" style="background-color: white; color: black;">Edit</button>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--
+                    <script>
+                        $(".remove").click(function () {
+                            var jawab = confirm("Yakin anda ingin menghapus karyawan tersebut ?");
+                            if (jawab === true) {
+                    //            kita set hapus false untuk mencegah duplicate request
+                                var hapus = false;
+                                if (!hapus) {
+                                    hapus = true;
+                                    $.post('remove.php', {id: $(this).attr('data-id')},
+                                    function (data) {
+                                        alert(data);
+                                    });
+                                    hapus = false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        });
+                    </script>
+-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Simpan Perubahan?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="xsimpan"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="batalsimpan">Batal</button>
+        <button type="button" class="btn btn-primary" id="oksimpan" data-bs-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <img src="./assets/brand/LogoHidden.png" alt="Img" height="200" width="300">
+</footer>
+<script type="module" src="javascriptInfoKaryawan.js"></script>
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      
+  </body>
+</html>
